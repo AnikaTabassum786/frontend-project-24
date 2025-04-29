@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { auth } from '../../firebase/firebase.init';
+
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { valueContext } from '../../RootLayout/RootLayout';
 
 const SignIn = () => {
+
+    const contextValue = useContext(valueContext)
+    console.log(contextValue)
 
     const handleSignIn=(e)=>{
         e.preventDefault()
@@ -10,6 +17,21 @@ const SignIn = () => {
         const password = e.target.password.value
 
         console.log(email,password)
+
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+           
+            const user = userCredential.user;
+            console.log(user,'Login Success')
+          })
+
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode,errorMessage)
+          });
+       
+
     }
     return (
         <>
