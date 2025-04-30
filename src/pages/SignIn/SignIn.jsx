@@ -1,15 +1,12 @@
 import React, { useContext } from 'react';
-import { auth } from '../../firebase/firebase.init';
-
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { valueContext } from '../../RootLayout/RootLayout';
 
 const SignIn = () => {
 
-    const contextValue = useContext(valueContext)
-    console.log(contextValue)
+    const {handleLogin} = useContext(valueContext)
 
-    const handleSignIn=(e)=>{
+    const handleSubmit=(e)=>{
+
         e.preventDefault()
         console.log('Sign in Clicked')
 
@@ -18,9 +15,8 @@ const SignIn = () => {
 
         console.log(email,password)
 
-        signInWithEmailAndPassword(auth, email, password)
+         handleLogin(email,password)
         .then((userCredential) => {
-           
             const user = userCredential.user;
             console.log(user,'Login Success')
           })
@@ -30,7 +26,6 @@ const SignIn = () => {
             const errorMessage = error.message;
             console.log(errorCode,errorMessage)
           });
-       
 
     }
     return (
@@ -65,7 +60,7 @@ const SignIn = () => {
                     <p className="px-3 dark:text-gray-600">OR</p>
                     <hr className="w-full dark:text-gray-600" />
                 </div>
-                <form  onSubmit={handleSignIn} className="space-y-3">
+                <form  onSubmit={handleSubmit} className="space-y-3">
                     <div className="space-y-4">
                         <div className="space-y-2">
                             <label htmlFor="email" className="block text-sm">Email address</label>

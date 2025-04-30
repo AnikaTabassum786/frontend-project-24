@@ -1,9 +1,13 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import React from 'react';
-import { auth } from '../../firebase/firebase.init';
+
+import React, { useContext } from 'react';
+import { valueContext } from '../../RootLayout/RootLayout';
  
 const SignUp = () => {
-    const handleSignUp=(e)=>{
+
+    const {handleSignup} = useContext(valueContext)
+
+    const handleSubmit=(e)=>{
+
         e.preventDefault()
         console.log('clicked')
 
@@ -15,7 +19,7 @@ const SignUp = () => {
         console.log(name,email,password,confirmPassword)
 
         
-        createUserWithEmailAndPassword(auth,email,password)
+        handleSignup(email,password)
         .then((userCredential) => {
             const user = userCredential.user;
             console.log(user)
@@ -59,7 +63,7 @@ const SignUp = () => {
             {/* <p className="px-3 dark:text-gray-600">OR</p> */}
             {/* <hr  className="w-full dark:text-gray-600" /> */}
         </div>
-        <form onSubmit={handleSignUp} className="space-y-3">
+        <form onSubmit={handleSubmit} className="space-y-3">
             <div className="space-y-2">
 
                 <div className="space-y-1">

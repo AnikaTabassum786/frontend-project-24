@@ -40,8 +40,8 @@ const Navbar = () => {
 
                 </ul>
                 <div className="items-center flex-shrink-0 hidden lg:flex">
-                    <button onClick={()=>navigation('/sign-in')} className={`self-center px-8 py-3 rounded text-white cursor-pointer ${pathname=='/sign-in' ? 'font-bold':''}`}>Sign in</button>
-                    <button onClick={()=>navigation('/sign-up')} className={`self-center px-8 py-3 rounded text-white cursor-pointer ${pathname== '/sign-up'? 'font-bold':''}`}>Sign up</button>
+                    <button onClick={()=>navigation('/sign-in')} className={`self-center px-1 py-3 rounded text-white cursor-pointer ${pathname=='/sign-in' ? 'font-bold':''}`}>Sign in</button>
+                    <button onClick={()=>navigation('/sign-up')} className={`self-center px-1 py-3 rounded text-white cursor-pointer ${pathname== '/sign-up'? 'font-bold':''}`}>Sign up</button>
                 </div>
                 <button className="p-4 lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-800">
